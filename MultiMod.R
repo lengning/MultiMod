@@ -62,7 +62,7 @@ MatLog=log2(Mat+1)
 library(mclust)
 if(Zero=="T")Gs=apply(MatLog,1,function(i)Mclust(i)$G)
 if(Zero=="F")Gs=apply(MatLog,1,function(i){
-											j=i[i>1]
+											j=i[i>0]
 											Mclust(j)$G})
 
 names(Gs)=rownames(Mat)
