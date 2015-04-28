@@ -4,11 +4,17 @@ print(options)
 File=options[1] # file name
 Zero=options[2] # Whether exclude 0 when looking for modes
 LOD=as.numeric(options[3]) # lower limit of detection
-Norm=options[4] # whether perform normalization; if "T" is specified, median-by-ratio normalization will be performed.
+NumNo0cut=as.numeric(options[4]) # cutoff for number of expressed cells
+Norm=options[5] # whether perform normalization; if "T" is specified, median-by-ratio normalization will be performed.
 if(length(options)<2)Zero="T"
 if(length(options)<3)LOD=0
-if(length(options)<4)Norm="F"
+if(length(options)<4)NumNo0cut=5
+if(length(options)<5)Norm="F"
 
+if(NumNo0cut<5){
+	NumNo0cut=5
+	cat("\n cutoff for number of cells cant be < 5! set to 5 \n")
+}
 #Text=T
 #n=5
 #File="PCA_example.csv"
@@ -34,8 +40,10 @@ Matraw=data.matrix(In)
 
 Max=apply(Matraw,1,max)
 NumNo0=apply(Matraw,1,function(i)length(which(i>0)))
-WhichRM=union(which(Max<LOD),which(NumNo0<5))
-print(paste(length(WhichRM),"genes with less than 5 expressed cells and genes with max expression < ", LOD, "are removed"))
+WhichRM=union(which(Max<LOD),which(NumNo0<NumNo0cut))
+cat(paste("\n",length(WhichRM),
+					"genes with less than",NumNo0cut, 
+					"expressed cells and genes with max expression < ", LOD, "are removed \n"))
 
 Mat=Matraw
 if(length(WhichRM)>0)Mat=Matraw[-WhichRM,]
