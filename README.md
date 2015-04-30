@@ -20,7 +20,7 @@ The 5th term defines the lower limit of detection threshold (default is 0). Gene
 
 The 6th term defines cutoff of number of expressed cells. Genes having number of non-zeros < cutoff will be exlcuded in the analysis. Default is 5.
 
-The 7th term defines whether normalization is needed.  If T is specified, median-by-ratio normalization will be performed prior to PCA analysis (default is F).
+The 7th term defines whether normalization is needed.  If T is specified, median-by-ratio normalization will be performed prior to analysis (default is F).
 
 Outputs:
 
