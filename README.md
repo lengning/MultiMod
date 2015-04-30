@@ -28,6 +28,6 @@ For each gene, number of modes are estimated using Gaussian mixture model (mclus
 If normalization is enabled, normalization will be performed first.
 Mclust was applied on log(data+1).
 
-XX_T_Multi_mod.csv: contains genes with more than 1 modes. 
+XX_Multi_mod.csv: contains genes with more than 1 modes. 
 
 XX_Num_clusters.csv: number of clusters for each gene.
