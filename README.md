@@ -1,5 +1,7 @@
 # MultiMod
 Identify genes with multiple modes
+
+
 Wrapper codes to identify genes with more than one modes. Example to run the code (from command line):
 
 Rscript MultiMod.R SCexample.csv
